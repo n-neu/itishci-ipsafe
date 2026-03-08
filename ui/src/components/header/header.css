@@ -1,0 +1,34 @@
+.header {
+    background-color: #FFD57A;
+    height: 4rem;
+
+    img {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .container {
+        font-size: 1.2rem;
+        display: flex;
+        flex-direction: row;
+            padding: 0.5rem;
+
+        .text-container {
+            display: flex;
+            flex-direction: row;
+            text-align: center;
+            align-items: center;
+            flex-grow: 1;
+            gap: 0.25rem;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            min-width: 4rem;
+        }
+    }
+
+}

@@ -1,0 +1,66 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: #737373;
+
+    .welcome {
+        font-size: 2.5rem;
+        text-align: center;
+        font-weight: 800;
+        color: black;
+    }
+
+    .hyperlink {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .details {
+        display: flex;
+        flex-direction: column;
+        background-color: #FFF8F0;
+        border: 1px solid #ebd6c3;
+        border-radius: 0.25rem;
+        font-size: 1.5rem;
+        padding: 1rem 1rem 0rem 1rem;
+
+        gap: 1rem;
+
+        input {
+            all: unset;
+            border-bottom: 2px solid #737373;
+            width: 100%;
+            padding: 0.25rem;
+        }
+
+        .other-methods {
+            height: 3rem;
+
+            .text-container {
+                display: flex;
+                align-items: center;
+            }
+
+            .logo-container {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                flex: 1;
+
+                svg {
+                    cursor: pointer;
+                }
+
+                div {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex: 1;
+
+                }
+            }
+        }
+    }
+}

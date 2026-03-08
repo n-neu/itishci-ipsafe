@@ -1,0 +1,13 @@
+.btn {
+    all: unset;
+    cursor: pointer;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    color: #FFFFFF;
+    min-height: 1.5rem;
+    width: 12rem;
+    text-align: center;
+    text-decoration: underline;
+    display: block;
+
+}
