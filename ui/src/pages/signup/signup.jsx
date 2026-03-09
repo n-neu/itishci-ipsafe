@@ -1,18 +1,35 @@
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/auth/authContext";
 import Button from "../../components/button/button";
 
 import "./signup.css";
 
-export default function SignUp() {
+function useUserSignUp() {
   const navigate = useNavigate();
 
+  const { setUser } = useContext(AuthContext);
+
+  function signUp(username) {
+    setUser(username);
+    navigate("/profile");
+  }
+
+  return signUp;
+}
+
+export default function SignUp() {
+  const navigate = useNavigate();
+  const userSignUp = useUserSignUp();
+  const [user, setUser] = useState("");
+
   return (
-    <div className="login">
+    <div className="start login">
       <p className="welcome">Welcome!</p>
       <div className="details">
         <div className="username-field">
           <p>Username</p>
-          <input type="text" />
+          <input type="text" value={user} onChange={(e) => setUser(e.target.value)} />
         </div>
         <div className="username-field">
           <p>Enter Email</p>
@@ -57,7 +74,7 @@ export default function SignUp() {
           Login
         </p>
       </div>
-      <Button type="info" text="SIGN UP" />
+      <Button type="info" text="SIGN UP" onClick={() => userSignUp(user)} isUnderlined={false} />
     </div>
   );
 }

@@ -1,8 +1,4 @@
 .start {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    flex-direction: column;
 
     .login-method {
         flex-grow: 1;
@@ -21,4 +17,5 @@
         gap: 2rem;
         margin-bottom: 2rem;
     }
+
 }

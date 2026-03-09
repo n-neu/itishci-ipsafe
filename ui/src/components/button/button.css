@@ -7,7 +7,19 @@
     min-height: 1.5rem;
     width: 12rem;
     text-align: center;
-    text-decoration: underline;
+    /* text-decoration: underline; */
     display: block;
+    position: relative;
 
+    .toggle {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: calc(100% - 2.5rem);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
 }

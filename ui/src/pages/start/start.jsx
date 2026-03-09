@@ -15,7 +15,7 @@ export function LoginMethodPrompt() {
 
 export default function Start() {
   return (
-    <div className="main start">
+    <div className="start">
       <div className="login-method">
         <Outlet />
       </div>

@@ -7,7 +7,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   return (
-    <div className="login">
+    <div className="start login">
       <p className="welcome">Welcome Back!</p>
       <div className="details">
         <div className="username-field">
@@ -51,7 +51,7 @@ export default function Login() {
         <p>Dont have an account? &nbsp;</p>
         <p className="hyperlink" onClick={() => navigate("/signup")}>Sign in</p>
       </div>
-      <Button type="info" text="LOG IN" />
+      <Button type="info" text="LOG IN" isUnderlined={false} />
     </div>
   );
 }
