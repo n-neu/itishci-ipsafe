@@ -15,7 +15,7 @@ import SignUp from "./pages/signup/signup";
 import Home from "./pages/home/home";
 import Profile from "./pages/profile/profile";
 
-import Trademark from "./pages/services/trademark";
+import Trademark from "./pages/services/trademark/trademark";
 
 import "./index.css";
 
