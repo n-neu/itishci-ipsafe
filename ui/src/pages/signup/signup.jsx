@@ -5,6 +5,11 @@ import Button from "../../components/button/button";
 
 import "./signup.css";
 
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 function useUserSignUp() {
   const navigate = useNavigate();
 
@@ -21,23 +26,51 @@ function useUserSignUp() {
 export default function SignUp() {
   const navigate = useNavigate();
   const userSignUp = useUserSignUp();
-  const [user, setUser] = useState("");
+  const [tempUser, setTempUser] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [hasError, setHasError] = useState(false);
+
+  const [attemptedSignUp, setAttemptedSignUp] = useState(false);
+
+  const loginwithUser = async () => {
+    setAttemptedSignUp(false)
+    await sleep(100 + Math.random() * 200);
+    setAttemptedSignUp(true)
+    if (!tempUser) {
+    }
+
+    if (!email) {
+    }
+
+    if (!password) {
+    }
+
+    if (tempUser && email && password) {
+      userSignUp(tempUser);
+    } else {
+      setHasError(true);
+    }
+
+  }
 
   return (
     <div className="start login">
       <p className="welcome">Welcome!</p>
-      <div className="details">
+      <div className="center">
+      {hasError && <p style={{color: "#B3261E"}}>Please complete all fields.</p>}
+      <div className="Ldetails">
         <div className="username-field">
-          <p>Username</p>
-          <input type="text" value={user} onChange={(e) => setUser(e.target.value)} />
+          <p style={{color: ((attemptedSignUp && !tempUser) ? "#B3261E" : "#737373")}}>Username</p>
+          <input style={{borderBottom: ((attemptedSignUp && !tempUser) ? "2px solid #B3261E" : "2px solid #737373")}}   type="text" onClick={() => setAttemptedSignUp(false)} value={tempUser} onChange={(e) => setTempUser(e.target.value)} />
         </div>
         <div className="username-field">
-          <p>Enter Email</p>
-          <input type="text" />
+          <p style={{color: ((attemptedSignUp && !email) ? "#B3261E" : "#737373")}}>Enter Email</p>
+          <input style={{borderBottom: ((attemptedSignUp && !email) ? "2px solid #B3261E" : "2px solid #737373")}}  type="text" onClick={() => setAttemptedSignUp(false)}  value={email}  onChange={(e) => setEmail(e.target.value)}/>
         </div>
         <div className="password-field">
-          <p>Password</p>
-          <input type="password" />
+          <p style={{color: ((attemptedSignUp && !password) ? "#B3261E" : "#737373")}}>Password</p>
+          <input style={{borderBottom: ((attemptedSignUp && !password) ? "2px solid #B3261E" : "2px solid #737373")}} type="password" onClick={() => setAttemptedSignUp(false)}  value={password}  onChange={(e) => setPassword(e.target.value)} />
         </div>
         <div className="other-methods">
           <div className="text-container">
@@ -68,13 +101,14 @@ export default function SignUp() {
           </div>
         </div>
       </div>
+      </div>
       <div className="flex-row">
         <p>Already have an account? &nbsp;</p>
         <p className="hyperlink" onClick={() => navigate("/login")}>
           Login
         </p>
       </div>
-      <Button type="info" text="SIGN UP" onClick={() => userSignUp(user)} isUnderlined={false} />
+      <Button type="info" text="SIGN UP" onClick={() => loginwithUser()} isUnderlined={false} />
     </div>
   );
 }

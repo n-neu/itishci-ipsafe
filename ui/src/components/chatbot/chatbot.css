@@ -1,9 +1,133 @@
 .chatbot {
+  all: unset;
     position: absolute;
-    /* width: 10rem;
-    height: 10rem; */
   cursor:grab;
 
-    border: 1px solid red;
+  /* border: 1px solid red; */
   z-index: 9999;
+
+  > img {
+    pointer-events: none;
+  }
+}
+
+.btn-top {
+  z-index: 999;
+}
+
+.chatbot-ui {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  z-index: 676766766767676767676767667;
+  background-color: hsl(32, 100%, 96%);
+  border: 1px solid hsl(0, 0%, 83%);
+  
+  box-shadow: 0 4px 10px rgba(230, 149, 69, 0.5);
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+
+  /* * {
+    border: 1px solid red;
+  } */
+
+  .chatbot-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+
+  > img {
+    
+  }
+  }
+
+  .chatbot-main {
+    flex: 1;
+    display: flex;
+    min-height: 70%;
+    overflow-y: auto;
+    flex-direction: column;
+
+    > .empty-inbox {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      > p {
+        color: #b4b4b4;
+      }
+    }
+
+  }
+/* 
+  > * {
+    border: 1px solid red;
+  } */
+
+  .chatbot-footer {
+    /* flex: 1; */
+    display: flex;
+    /* height: 10%; */
+    align-content: center;
+    max-width: 100%;
+    min-height: 64px;
+    /* align-items: center; */
+
+    > .send-button-wrapper {
+display: flex;
+  align-items: flex-end;
+      height: 100%;
+    }
+
+
+    > .message-container {
+      display: flex;
+      overflow: hidden;
+      flex: 1;
+      padding: 2px;
+
+
+      > textarea {
+        /* all: unset; */
+        field-sizing: content;
+        max-width: 100%;
+        max-height: 100px;
+        overflow-y: auto;
+      font-size: 1rem;
+      min-width: 100%;
+      resize: none;
+      background-color: white;
+      border: 1px solid gray;
+      border-radius: 1rem;
+      padding: 0.25rem;
+      outline: none;
+      font-family: "ProximaNova", sans-serif;
+      line-height: 24px;
+      };
+      
+
+      /* > textarea {
+        flex: 1;
+        all: unset;
+        background-color: white;
+        
+      border-radius: 1rem;
+      border: 1px solid gray;
+        /* background-color: transparent; */
+        /* width: 100%; */
+        /* height: 100%; */
+        /* field-sizing: content;
+        max-width: 250px;
+        max-height: 256px; */
+      } */
+    }
+
+  }
 }

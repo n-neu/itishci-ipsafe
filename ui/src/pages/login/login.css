@@ -1,3 +1,10 @@
+.start {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .login {
     display: flex;
     flex-direction: column;
@@ -17,16 +24,17 @@
         cursor: pointer;
     }
 
-    .details {
+    .Ldetails {
         display: flex;
         flex-direction: column;
         background-color: #FFF8F0;
         border: 1px solid #ebd6c3;
         border-radius: 0.25rem;
-        font-size: 1.5rem;
+        font-size: 1rem;
+        gap: 0.5rem;
         padding: 1rem 1rem 0rem 1rem;
-
-        gap: 1rem;
+        width: 100%;
+        text-align: start;
 
         input {
             all: unset;
@@ -36,6 +44,8 @@
         }
 
         .other-methods {
+            display: flex;
+            flex-direction: row;
             height: 3rem;
 
             .text-container {
@@ -63,4 +73,20 @@
             }
         }
     }
+}
+
+
+.error-wrapper {
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    gap: 0.5rem;
+    padding: 1rem 1rem 0rem 1rem;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
 }

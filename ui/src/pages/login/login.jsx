@@ -1,22 +1,62 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/button/button";
 
 import "./login.css";
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 export default function Login() {
   const navigate = useNavigate();
+  const [hasError, setHasError] = useState(false);
+  const [errorStyling, setErrorStyling] = useState({});
+  const [errorTextStyling, setErrorTextStyling] = useState({});
+  const [errorInputStyling, setErrorInputStyling] = useState({});
+
+  const resetStyles = () => {
+    setErrorStyling({
+      border: "1px solid #ebd6c3",
+    })
+    setErrorTextStyling({
+      color: "#737373",
+    })
+    setErrorInputStyling({
+      borderBottom: "2px solid #737373",
+    })
+  }
+
+  const fakeLogin = async () => {
+    setHasError(false)
+    resetStyles()
+    await sleep(100 + Math.random() * 200);
+    console.log("LOGIN")
+    setErrorStyling({
+      border: "1px solid #B3261E",
+    })
+    setErrorTextStyling({
+      color: "#B3261E",
+    })
+    setErrorInputStyling({
+      borderBottom: "2px solid #B3261E",
+    })
+    setHasError(true)
+  }
 
   return (
     <div className="start login">
       <p className="welcome">Welcome Back!</p>
-      <div className="details">
+      <div className="center">
+      {hasError && <p style={{color: "#B3261E"}}>No account has been found with that username and password</p>}
+      <div className="Ldetails" style={errorStyling}>
         <div className="username-field">
-          <p>Username</p>
-          <input type="text" />
+          <p style={errorTextStyling}>Username</p>
+          <input style={errorInputStyling} onClick={resetStyles} type="text"/>
         </div>
         <div className="password-field">
-          <p>Password</p>
-          <input type="password" />
+          <p style={errorTextStyling}>Password</p>
+          <input style={errorInputStyling} onClick={resetStyles} type="password" />
         </div>
         <div className="other-methods">
           <div className="text-container">
@@ -47,11 +87,12 @@ export default function Login() {
           </div>
         </div>
       </div>
+      </div>
       <div className="flex-row">
         <p>Dont have an account? &nbsp;</p>
-        <p className="hyperlink" onClick={() => navigate("/signup")}>Sign in</p>
+        <p className="hyperlink" onClick={() => navigate("/signup")}>Sign up</p>
       </div>
-      <Button type="info" text="LOG IN" isUnderlined={false} />
+      <Button onClick={() => fakeLogin()} type="info" text="LOG IN" isUnderlined={false} />
     </div>
   );
 }
