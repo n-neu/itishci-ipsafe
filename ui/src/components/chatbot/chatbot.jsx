@@ -2,6 +2,15 @@ import Draggable from "react-draggable";
 import { useRef, useEffect, useState } from "react";
 import "./chatbot.css";
 
+function MessageWrapper({ authorType, message }) {
+  return (
+    <div>
+      {authorType}
+      {message}
+    </div>
+  );
+}
+
 export function ChatbotUI({ isShown, setChatbotShown, btnRef }) {
   const containerRef = useRef(null);
 
@@ -11,12 +20,7 @@ export function ChatbotUI({ isShown, setChatbotShown, btnRef }) {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(event.target) &&
-        btnRef.current &&
-        !btnRef.current.contains(event.target)
-      ) {
+      if (containerRef.current && !containerRef.current.contains(event.target) && btnRef.current && !btnRef.current.contains(event.target)) {
         setChatbotShown(false);
       }
     };
@@ -38,13 +42,13 @@ export function ChatbotUI({ isShown, setChatbotShown, btnRef }) {
     setLoading(true);
 
     try {
-  const res = await fetch("http://localhost:5000/api/chat", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ message: input }),
-    });
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ message: input }),
+      });
 
       const data = await res.json();
 
@@ -55,10 +59,7 @@ export function ChatbotUI({ isShown, setChatbotShown, btnRef }) {
 
       setMessages((prev) => [...prev, botMessage]);
     } catch (err) {
-      setMessages((prev) => [
-        ...prev,
-        { role: "assistant", content: "Error contacting support bot." },
-      ]);
+      setMessages((prev) => [...prev, { role: "assistant", content: "Error contacting support bot." }]);
     }
 
     setLoading(false);
@@ -72,19 +73,9 @@ export function ChatbotUI({ isShown, setChatbotShown, btnRef }) {
   };
 
   return (
-    <div
-      ref={containerRef}
-      className="chatbot-ui"
-      style={{ display: isShown ? "flex" : "none" }}
-    >
+    <div ref={containerRef} className="chatbot-ui" style={{ display: isShown ? "flex" : "none" }}>
       <div className="chatbot-header">
-        <img
-          src="/chatbot.png"
-          alt="chatbot"
-          width="64px"
-          height="64px"
-          draggable={false}
-        />
+        <img src="/chatbot.png" alt="chatbot" width="64px" height="64px" draggable={false} />
         <h1>HelpBot</h1>
       </div>
 
@@ -94,35 +85,28 @@ export function ChatbotUI({ isShown, setChatbotShown, btnRef }) {
             <p>Start a conversation!</p>
           </div>
         ) : (
-          <div className="chat-messages">
-            {messages.map((msg, i) => (
-              <div key={i} className={`msg ${msg.role}`}>
-                {msg.content}
-              </div>
-            ))}
-            {loading && <div className="msg assistant">Typing...</div>}
-          </div>
+          <>
+            <div className="chat-messages">
+              {messages.map((msg, i) => (
+                <div className="msg">
+                  <div key={i} className={`${msg.role}`}>
+                    {msg.content}
+                  </div>
+                </div>
+              ))}
+              {loading && <div className="msg assistant">Typing...</div>}
+            </div>
+          </>
         )}
       </div>
 
       <div className="chatbot-footer">
         <div className="message-container">
-          <textarea
-            placeholder="Send a Message..."
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-          />
+          <textarea placeholder="Send a Message..." value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={handleKeyDown} />
         </div>
 
         <div className="send-button-wrapper" onClick={sendMessage}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="48px"
-            viewBox="0 -960 960 960"
-            width="48px"
-            fill="#033155"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#033155">
             <path d="M120-160v-640l760 320-760 320Zm60-93 544-227-544-230v168l242 62-242 60v167Z" />
           </svg>
         </div>
@@ -148,16 +132,7 @@ export default function Chatbot({ onClick, isShown, toggleRef }) {
   };
 
   return (
-    <Draggable
-      onStart={handleStart}
-      onStop={handleStop}
-      cancel=".no-drag"
-      enableUserSelectHack={true}
-      nodeRef={toggleRef}
-      offsetParent={document.body}
-      bounds="parent"
-      defaultPosition={{ x: 0, y: window.innerHeight / 1.4 }}
-    >
+    <Draggable onStart={handleStart} onStop={handleStop} cancel=".no-drag" enableUserSelectHack={true} nodeRef={toggleRef} offsetParent={document.body} bounds="parent" defaultPosition={{ x: 0, y: window.innerHeight / 1.4 }}>
       <button
         style={{ display: !isShown ? "block" : "none" }}
         onClick={(e) => {
@@ -167,13 +142,7 @@ export default function Chatbot({ onClick, isShown, toggleRef }) {
         ref={toggleRef}
         className="chatbot btn-top"
       >
-        <img
-          src="/chatbot.png"
-          alt="chatbot"
-          width="80px"
-          height="80px"
-          draggable={false}
-        />
+        <img src="/chatbot.png" alt="chatbot" width="80px" height="80px" draggable={false} />
       </button>
     </Draggable>
   );
