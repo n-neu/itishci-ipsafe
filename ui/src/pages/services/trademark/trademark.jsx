@@ -3,7 +3,6 @@ import "../template.css";
 import "./trademark.css";
 
 export default function Trademark() {
-  // This state will track which tab is currently selected
   const [activeTab, setActiveTab] = useState("In Person");
 
   return (
@@ -36,8 +35,9 @@ export default function Trademark() {
         </svg>
       </button>
 
-      {/* Note: We will add the "Take Photo / File Upload" pop-up logic later! */}
+      {/*take photo/upload photo logic TBA*/}
     </div>
   );
 
 }
+
