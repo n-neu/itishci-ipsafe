@@ -15,7 +15,9 @@ import SignUp from "./pages/signup/signup";
 import Home from "./pages/home/home";
 import Profile from "./pages/profile/profile";
 
-import Trademark from "./pages/services/trademark/trademark";
+import Trademark from "./pages/services/trademark";
+import Patent from "./pages/services/patent";
+import Copyright from "./pages/services/copyright";
 
 import "./index.css";
 
@@ -51,6 +53,8 @@ export function App() {
             </Route>
             <Route path="services">
             <Route path="trademark" element={<Trademark />} />
+            <Route path="patent" element={<Patent />} />
+            <Route path="copyright" element={<Copyright />} />
             </Route>
             <Route
               path="/profile"
