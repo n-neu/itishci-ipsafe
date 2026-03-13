@@ -1,0 +1,63 @@
+.trademark-container {
+  padding: 20px;
+  background-color: #Fdfdfd;
+  min-height: 100vh;
+  padding-bottom: 120px;
+}
+
+.page-title {
+  color: #033155;
+  margin-bottom: 15px;
+  font-family: sans-serif;
+}
+
+.tab-buttons {
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 15px 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+.yellow-tab { background-color: #fbbc04; }
+.blue-tab { background-color: #033155; }
+.inactive-tab { background-color: #cccccc; color: #666; }
+
+.content-card {
+  background-color: #Fcfcfc;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  min-height: 400px;
+  border: 1px solid #eaeaea;
+}
+
+.content-card h3 {
+  margin-top: 0;
+  color: #000;
+}
+
+.fab-button {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 70px;
+  height: 70px;
+  background-color: #fbbc04;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1000;
+}
